@@ -1,6 +1,6 @@
 package io.github.np.agent.controller;
 
-import org.springframework.ai.chat.client.ChatClient;
+import io.github.np.agent.service.ChatService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -10,17 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/chat")
 public class ChatController {
 
-    private final ChatClient chatClient;
+    private final ChatService chatService;
 
-    public ChatController(ChatClient.Builder builder) {
-        this.chatClient = builder.build();
+    public ChatController(ChatService chatService) {
+        this.chatService = chatService;
     }
 
     @GetMapping
     public String chat(@RequestParam String message) {
-        return chatClient.prompt()
-                .user(message)
-                .call()
-                .content();
+        return chatService.chat(message);
     }
 }
