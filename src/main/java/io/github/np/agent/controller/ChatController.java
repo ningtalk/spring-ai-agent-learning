@@ -20,4 +20,11 @@ public class ChatController {
     public String chat(@RequestParam String message) {
         return chatService.chat(message);
     }
+
+    @GetMapping("/with_mem")
+    public String chatWithMemory(
+            @RequestParam String conversationId,
+            @RequestParam String message) {
+        return chatService.chatWithMem(conversationId, message);
+    }
 }
