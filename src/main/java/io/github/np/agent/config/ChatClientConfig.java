@@ -1,5 +1,7 @@
 package io.github.np.agent.config;
 
+import io.github.np.agent.tool.DateTimeTools;
+import io.github.np.agent.tool.WeatherTools;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
 import org.springframework.ai.chat.memory.ChatMemory;
@@ -22,6 +24,7 @@ public class ChatClientConfig {
                 .defaultSystem("你是一个乐于助人的AI助手，用简洁清晰的中文回答问题。")
                 .defaultAdvisors(MessageChatMemoryAdvisor.builder(chatMemory)
                         .build())
+                .defaultTools(new DateTimeTools(), new WeatherTools())
                 .build();
     }
 }

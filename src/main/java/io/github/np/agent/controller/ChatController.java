@@ -21,7 +21,7 @@ public class ChatController {
         return chatService.chat(message);
     }
 
-    @GetMapping("/with_mem")
+    @GetMapping
     public String chatWithMemory(
             @RequestParam String conversationId,
             @RequestParam String message) {
