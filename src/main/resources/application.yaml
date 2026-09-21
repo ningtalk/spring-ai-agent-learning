@@ -13,6 +13,17 @@ spring:
         index-type: HNSW
         distance-type: COSINE_DISTANCE
         dimensions: 1536
+  mcp:
+    client:
+      enabled: true
+      name: my-mcp-client
+      version: 1.0.0
+      request-timeout: 30s
+      type: SYNC
+      toolcallback:
+        enabled: true
+      stdio:
+        servers-configuration: classpath:mcp-servers.json
 
 server:
   port: 8080
@@ -21,3 +32,5 @@ logging:
   level:
     org.springframework.ai.chat.client.advisor: DEBUG
     org.springframework.ai.vectorstore: TRACE
+    io.modelcontextprotocol: DEBUG
+    org.springframework.ai.mcp: DEBUG

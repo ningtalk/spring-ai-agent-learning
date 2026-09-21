@@ -8,10 +8,14 @@ import org.springframework.ai.chat.client.advisor.vectorstore.QuestionAnswerAdvi
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.ai.template.st.StTemplateRenderer;
+import org.springframework.ai.tool.ToolCallbackProvider;
 import org.springframework.ai.vectorstore.SearchRequest;
 import org.springframework.ai.vectorstore.VectorStore;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.Arrays;
 
 @Configuration
 public class ChatClientConfig {
@@ -36,7 +40,8 @@ public class ChatClientConfig {
     @Bean
     public ChatClient chatClient(ChatClient.Builder builder,
                                  ChatMemory chatMemory,
-                                 VectorStore vectorStore) {
+                                 VectorStore vectorStore,
+                                 ToolCallbackProvider mcpTools) {
 
         PromptTemplate customTemplate = PromptTemplate.builder()
                 .renderer(StTemplateRenderer.builder()
@@ -72,7 +77,15 @@ public class ChatClientConfig {
                         MessageChatMemoryAdvisor.builder(chatMemory).build(),
                         qaAdvisor  // 挂载配置好的 RAG Advisor
                 )
-                .defaultTools(new DateTimeTools(), new WeatherTools())
+                .defaultToolCallbacks(mcpTools.getToolCallbacks())
                 .build();
+    }
+
+    @Bean
+    public CommandLineRunner checkTools(ToolCallbackProvider provider) {
+        return args -> {
+            Arrays.stream(provider.getToolCallbacks())
+                    .forEach(t -> System.out.println("MCP工具: " + t.getToolDefinition().name()));
+        };
     }
 }
