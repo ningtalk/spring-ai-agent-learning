@@ -5,7 +5,7 @@
       "args": [
         "-y",
         "@modelcontextprotocol/server-filesystem",
-        "/Users/{you}/Desktop"
+        "/Users/{your name}/Desktop"
       ]
     }
   }

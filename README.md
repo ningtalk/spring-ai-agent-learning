@@ -14,9 +14,9 @@
 |:---:|:---|:---|:---|:---:|
 | 一 | 基础对话与 Spring AI 核心抽象 | `ChatClient`、Advisor 机制、Prompt 结构 | `v0.1-chat` | ✅ |
 | 二 | 对话记忆 | `ChatMemory`、`MessageChatMemoryAdvisor`、滑动窗口 | `v0.2-memory` | ✅ |
-| 三 | 工具调用 | `@Tool`、Function Calling、ReAct 循环 | `v0.3-tools` | 🚧 |
-| 四 | RAG 检索增强 | 文档加载、向量化、检索增强、查询重写 | `v0.4-rag` | ⏳ |
-| 五 | MCP 协议集成 | MCP Client / Server、标准化工具生态 | `v0.5-mcp` | ⏳ |
+| 三 | 工具调用 | `@Tool`、Function Calling、ReAct 循环 | `v0.3-tools` | ✅  |
+| 四 | RAG 检索增强 | 文档加载、向量化、检索增强、查询重写 | `v0.4-rag` | ✅  |
+| 五 | MCP 协议集成 | MCP Client / Server、标准化工具生态 | `v0.5-mcp` | ✅  |
 | 六 | 多 Agent 协作 | SubAgent、Handoffs、Supervisor 模式 | `v0.6-multi-agent` | ⏳ |
 | 七 | 可观测性与工程化 | 自定义 Advisor、指标、安全护栏 | `v0.7-observability` | ⏳ |
 
