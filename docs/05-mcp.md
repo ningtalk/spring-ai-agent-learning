@@ -94,7 +94,7 @@ MCP **不是** Function Calling 的替代品，而是它的**标准化和规模�
 
 ### 3.3 配置 MCP 连接
 
-在 `src/main/resources/` 下创建 `mcp-servers.json`：
+在 `../src/main/resources` 下创建 `mcp-servers.json`：
 
 ```json
 {
